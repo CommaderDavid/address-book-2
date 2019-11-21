@@ -2,13 +2,20 @@
 // Business Logic for AddressBook ------------
 function AddressBook() {
   this.contacts = [];
+  this.currentId = 0;
 }
 
 // This new method (addContact), takes an (Contact) object as an argument
 AddressBook.prototype.addContact = function(contact) {
-  // It locates the (AddressBook) contacts array by calling (this.contacts)
+  contact.id = this.assignId();
   this.contacts.push(contact);
+  // It locates the (AddressBook) contacts array by calling (this.contacts)
   // Uses (.push()) to add the Contact provided as an argument to the (AddressBook) contacts array porperty
+}
+
+AddressBook.prototype.assignId = function() {
+  this.currentId += 1;
+  return this.currentId;
 }
 
 // Business Logic for Contacts ---------
