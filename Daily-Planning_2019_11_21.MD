@@ -28,13 +28,19 @@
 
 #### Please list the names of the lessons you completed today:
 
-*
+* Address Book:
+  * Objects within Objects
+  * Unique IDs
+  * Finding and Deleting Contacts
 
 
 #### Please list the names of the projects you worked on today:
 
-*
+* Address Book:
+  * Objects within Objects
+  * Unique IDs
+  * Finding and Deleting Contacts
 
 #### Please add a link to GitHub repository to all projects you worked on today:
 
-*
+* https://github.com/CommaderDavid/address-book-2
