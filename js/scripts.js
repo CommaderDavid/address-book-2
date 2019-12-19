@@ -55,14 +55,15 @@ Contact.prototype.fullName = function() {
 }
 
 // Business Logic for Addresses
-function Address(street, city, state) {
+function Address(label, street, city, state) {
+  this.label = label;
   this.street = street;
   this.city = city;
   this.state = state;
 }
 
 Address.prototype.fullAddress = function() {
-  return this.street + ", " + this.city + ", " + this.state;
+  return this.label + "<br>" + this.street + ", " + this.city + ", " + this.state;
 }
 
 // User Interface Logic
@@ -102,6 +103,22 @@ function attachContactListeners() {
 
 $(document).ready(function() {
   attachContactListeners();
+  $("#add-address").click(function() {
+    $("#add-info").append('<div class="new-address">' +
+                                '<div class="form-group">' +
+                                  '<label for="new-street">Street</label>' +
+                                  '<input type="text" class="form-control" id="new-street">' +
+                                '</div>' +
+                                '<div class="form-group">' +
+                                  '<label for="new-city">City</label>' +
+                                  '<input type="text" class="form-control" id="new-city">' +
+                                '</div>' +
+                                '<div class="form-group">' +
+                                  '<label for="new-state">State</label>' +
+                                  '<input type="text" class="form-control" id="new-state">' +
+                                '</div>' +
+                              '</div>');
+  });
   $("form#new-contact").submit(function(e) {
     e.preventDefault();
     var inputtedFirstName = $("input#new-first-name").val();

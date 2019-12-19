@@ -28,11 +28,10 @@
 
 *
 
-
 #### Please list the names of the projects you worked on today:
 
-*
+* Address Book
 
 #### Please add a link to GitHub repository to all projects you worked on today:
 
-*
+* https://github.com/CommaderDavid/address-book-2
