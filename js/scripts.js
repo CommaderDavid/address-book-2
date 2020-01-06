@@ -55,15 +55,14 @@ Contact.prototype.fullName = function() {
 }
 
 // Business Logic for Addresses
-function Address(label, street, city, state) {
-  this.label = label;
+function Address(street, city, state) {
   this.street = street;
   this.city = city;
   this.state = state;
 }
 
 Address.prototype.fullAddress = function() {
-  return this.label + "<br>" + this.street + ", " + this.city + ", " + this.state;
+  return this.street + ", " + this.city + ", " + this.state;
 }
 
 // User Interface Logic
@@ -84,7 +83,7 @@ function showContact(contactId) {
   $(".first-name").html(contact.firstName);
   $(".last-name").html(contact.lastName);
   $(".phone-number").html(contact.phoneNumber);
-  $(".personal-email").html(contact.email);
+  $(".personal-email").html(contact.personalEmail);
   var buttons = $("#buttons");
   buttons.empty();
   buttons.append("<button class='deleteButton' id=" + contact.id + ">Delete</button>");
@@ -125,13 +124,24 @@ $(document).ready(function() {
     var inputtedLastName = $("input#new-last-name").val();
     var inputtedPhoneNumber = $("input#new-phone-number").val();
     var inputtedPersonalEmail = $("input#new-personal-email").val();
+    // address inputs
+    var inputtedStreet = $("input#new-street").val();
+    var inputtedCity = $("input#new-city").val();
+    var inputtedState = $("input#new-state").val();
 
     $("input#new-first-name").val("");
     $("input#new-last-name").val("");
     $("input#new-phone-number").val("");
     $("input#new-personal-email").val("");
+    // address inputs
+    $("input#new-street").val("");
+    $("input#new-city").val("");
+    $("input#new-state").val("");
 
     var newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber, inputtedPersonalEmail);
+    if (inputtedStreet == " " && inputtedCity == " " && inputtedState == " ") {
+      newContact.address.push()
+    }
     addressBook.addContact(newContact);
     displayContactDetails(addressBook);
   })
