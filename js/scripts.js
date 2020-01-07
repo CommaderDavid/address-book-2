@@ -84,6 +84,11 @@ function showContact(contactId) {
   $(".last-name").html(contact.lastName);
   $(".phone-number").html(contact.phoneNumber);
   $(".personal-email").html(contact.personalEmail);
+  if (contact.address.length > 0) {
+    contact.address.forEach(function(part) {
+      $(".main-address").html(part.street + ", " + part.city + ", " + part.state);
+    })
+  }
   var buttons = $("#buttons");
   buttons.empty();
   buttons.append("<button class='deleteButton' id=" + contact.id + ">Delete</button>");
@@ -139,10 +144,12 @@ $(document).ready(function() {
     $("input#new-state").val("");
 
     var newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber, inputtedPersonalEmail);
-    if (inputtedStreet == " " && inputtedCity == " " && inputtedState == " ") {
-      newContact.address.push()
+    var newAddress = new Address(inputtedStreet, inputtedCity, inputtedState);
+    if (inputtedStreet != "" && inputtedCity != "" && inputtedState != "") {
+      newContact.address.push(newAddress);
     }
     addressBook.addContact(newContact);
+    console.log(addressBook);
     displayContactDetails(addressBook);
   })
 })
