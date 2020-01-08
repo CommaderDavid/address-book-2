@@ -109,7 +109,7 @@ $(document).ready(function() {
   attachContactListeners();
   // home address
   $("#home-address").click(function() {
-    $("#add-info").append('<div class="home-address">' +
+    $("#add-info").append('<div class="home-address">' + '<h2>Home</h2>' +
                                 '<div class="form-group">' +
                                   '<label for="home-street">Street</label>' +
                                   '<input type="text" class="form-control" id="home-street">' +
@@ -126,7 +126,7 @@ $(document).ready(function() {
   });
   // work address
   $("#work-address").click(function() {
-    $("#add-info").append('<div class="work-address">' +
+    $("#add-info").append('<div class="work-address">' + '<h2>Work</h2>' +
                                 '<div class="form-group">' +
                                   '<label for="work-street">Street</label>' +
                                   '<input type="text" class="form-control" id="work-street">' +
@@ -143,7 +143,7 @@ $(document).ready(function() {
   });
   // other address
   $("#other-address").click(function() {
-    $("#add-info").append('<div class="other-address">' +
+    $("#add-info").append('<div class="other-address">' + '<h2>Other</h2>' +
                                 '<div class="form-group">' +
                                   '<label for="other-street">Street</label>' +
                                   '<input type="text" class="form-control" id="other-street">' +
