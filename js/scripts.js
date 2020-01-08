@@ -47,7 +47,9 @@ function Contact(firstName, lastName, phoneNumber, personalEmail) {
   this.lastName = lastName;
   this.phoneNumber = phoneNumber;
   this.personalEmail = personalEmail;
-  this.address = [];
+  this.homeAddress = [];
+  this.workAddress = [];
+  this.otherAddress = [];
 }
 
 Contact.prototype.fullName = function() {
@@ -55,14 +57,10 @@ Contact.prototype.fullName = function() {
 }
 
 // Business Logic for Addresses
-function Address(street, city, state) {
+function HomeAddress(street, city, state) {
   this.street = street;
   this.city = city;
   this.state = state;
-}
-
-Address.prototype.fullAddress = function() {
-  return this.street + ", " + this.city + ", " + this.state;
 }
 
 // User Interface Logic
@@ -84,8 +82,18 @@ function showContact(contactId) {
   $(".last-name").html(contact.lastName);
   $(".phone-number").html(contact.phoneNumber);
   $(".personal-email").html(contact.personalEmail);
-  if (contact.address.length > 0) {
-    contact.address.forEach(function(part) {
+  if (contact.homeAddress.length > 0) {
+    contact.homeAddress.forEach(function(part) {
+      $(".main-address").html(part.street + ", " + part.city + ", " + part.state);
+    })
+  }
+  if (contact.workAddress.length > 0) {
+    contact.workAddress.forEach(function(part) {
+      $(".main-address").html(part.street + ", " + part.city + ", " + part.state);
+    })
+  }
+  if (contact.otherAddress.length > 0) {
+    contact.otherAddress.forEach(function(part) {
       $(".main-address").html(part.street + ", " + part.city + ", " + part.state);
     })
   }
@@ -158,6 +166,7 @@ $(document).ready(function() {
                                 '</div>' +
                               '</div>');
   });
+  // add contact button pressed
   $("form#new-contact").submit(function(e) {
     e.preventDefault();
     var inputtedFirstName = $("input#new-first-name").val();
@@ -195,9 +204,20 @@ $(document).ready(function() {
     $("input#other-state").val("");
 
     var newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber, inputtedPersonalEmail);
-    var newAddress = new Address(inputtedStreet, inputtedCity, inputtedState);
-    if (inputtedStreet != "" && inputtedCity != "" && inputtedState != "") {
-      newContact.address.push(newAddress);
+    // home address creation
+    var homeAddress = new HomeAddress(inputtedHomeStreet, inputtedHomeCity, inputtedHomeState);
+    if (inputtedHomeStreet != "" && inputtedHomeCity != "" && inputtedHomeState != "") {
+      newContact.homeAddress.push(homeAddress);
+    }
+    // work address creation
+    var workAddress = new Address(inputtedWorkStreet, inputtedWorkCity, inputtedWorkState);
+    if (inputtedWorkStreet != "" && inputtedWorkCity != "" && inputtedWorkState != "") {
+      newContact.workAddress.push(workAddress);
+    }
+    // other address creation
+    var otherAddress = new Address(inputtedOtherStreet, inputtedOtherCity, inputtedOtherState);
+    if (inputtedOtherStreet != "" && inputtedOtherCity != "" && inputtedOtherState != "") {
+      newContact.otherAddress.push(otherAddress);
     }
     addressBook.addContact(newContact);
     console.log(addressBook);
