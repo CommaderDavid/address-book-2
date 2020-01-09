@@ -188,12 +188,13 @@ $(document).ready(function() {
     // work address inputs
     var inputtedWorkStreet = $("input#work-street").val();
     var inputtedWorkCity = $("input#work-city").val();
-    var inputtedWorkState = $("inputwork-state").val();
+    var inputtedWorkState = $("input#work-state").val();
     // other address inputs
     var inputtedOtherStreet = $("input#other-street").val();
     var inputtedOtherCity = $("input#other-city").val();
     var inputtedOtherState = $("input#other-state").val();
 
+    // Clears the input values
     $("input#new-first-name").val("");
     $("input#new-last-name").val("");
     $("input#new-phone-number").val("");
@@ -209,7 +210,7 @@ $(document).ready(function() {
     // work address inputs
     $("input#work-street").val("");
     $("input#work-city").val("");
-    $("inputwork-state").val("");
+    $("input#work-state").val("");
     // other address inputs
     $("input#other-street").val("");
     $("input#other-city").val("");
@@ -217,18 +218,18 @@ $(document).ready(function() {
 
     var newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber, inputtedPersonalEmail);
     // home address creation
-    var homeAddress = new Address(inputtedHomeStreet, inputtedHomeCity, inputtedHomeState);
-    if (inputtedHomeStreet != "" && inputtedHomeCity != "" && inputtedHomeState != "") {
+    var homeAddress = new Address(inputtedHomeLabel, inputtedHomeStreet, inputtedHomeCity, inputtedHomeState);
+    if (inputtedHomeLabel === "home") {
       newContact.homeAddress.push(homeAddress);
     }
     // work address creation
-    var workAddress = new Address(inputtedWorkStreet, inputtedWorkCity, inputtedWorkState);
-    if (inputtedWorkStreet != "" && inputtedWorkCity != "" && inputtedWorkState != "") {
+    var workAddress = new Address(inputtedWorkLabel, inputtedWorkStreet, inputtedWorkCity, inputtedWorkState);
+    if (inputtedWorkLabel === "work") {
       newContact.workAddress.push(workAddress);
     }
     // other address creation
-    var otherAddress = new Address(inputtedOtherStreet, inputtedOtherCity, inputtedOtherState);
-    if (inputtedOtherStreet != "" && inputtedOtherCity != "" && inputtedOtherState != "") {
+    var otherAddress = new Address(inputtedOtherLabel, inputtedOtherStreet, inputtedOtherCity, inputtedOtherState);
+    if (inputtedOtherLabel === "other") {
       newContact.otherAddress.push(otherAddress);
     }
     addressBook.addContact(newContact);

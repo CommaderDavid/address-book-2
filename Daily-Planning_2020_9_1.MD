@@ -1,6 +1,6 @@
 # Daily Planning Doc
 
-##### Date: 1-7-20
+##### Date: 1-9-20
 
 ## BEFORE BEGINNING WORK:
 
@@ -25,12 +25,12 @@
 
 #### Please list the names of the lessons you completed today:
 
-*
+* Address Book
 
 #### Please list the names of the projects you worked on today:
 
-*
+* Address Book
 
 #### Please add a link to GitHub repository to all projects you worked on today:
 
-*
+* https://github.com/CommaderDavid/address-book-2
